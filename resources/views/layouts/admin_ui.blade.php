@@ -103,7 +103,7 @@
 		<div class="clearfix"></div>
 		<footer>
 			<div class="container-fluid">
-				<p class="copyright">&copy; {{ date('Y') }} PT. UBJA. All Rights Reserved.</p>
+				<p class="copyright">&copy; {{ date('Y') }} All Rights Reserved.</p>
 			</div>
 		</footer>
 

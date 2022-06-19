@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Jun 2022 pada 15.47
+-- Waktu pembuatan: 19 Jun 2022 pada 17.11
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -48,7 +48,7 @@ CREATE TABLE `barang` (
 INSERT INTO `barang` (`id`, `jenis`, `nama`, `harga`, `stock`, `gambar`, `deskripsi`, `terjual`, `dilihat`, `created_at`, `updated_at`) VALUES
 ('obat-flu-kucing', 'obat', 'Obat flu kucing', 120000, 120, 'obat-flu-kucing-1654892009-image-1.png', 'obat flu kucing', 0, 1, '2022-06-10 20:13:29', '2022-06-10 20:17:36'),
 ('pedigree', 'makanan', 'Pedigree', 85000, 298, 'pedigree-1654891872-image-1.png', 'Makanan anjing pedigree', 2, 3, '2022-06-10 20:11:12', '2022-06-10 21:31:06'),
-('royal-cannin', 'makanan', 'Royal Cannin', 50000, 499, 'royal-cannin-1654891583-image-1.jpg', 'Makanan kucing royal canning', 1, 0, '2022-06-10 20:06:23', '2022-06-10 21:32:00'),
+('royal-cannin', 'makanan', 'Royal Cannin', 50000, 499, 'royal-cannin-1654891583-image-1.jpg', 'Makanan kucing royal canning', 1, 1, '2022-06-10 20:06:23', '2022-06-19 15:10:19'),
 ('whiskas-junior', 'makanan', 'Whiskas junior', 40000, 700, 'whiskas-junior-1654891970-image-1.png', 'makanan kucing junior', 0, 1, '2022-06-10 20:12:50', '2022-06-10 21:31:17');
 
 -- --------------------------------------------------------

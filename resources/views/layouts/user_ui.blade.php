@@ -124,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="col-md-6 footer-left">
                 <div class="sign-grds">
-                    <p>PT. UBJA (PT. Usaha Bersama Jaya Abadi) adalah perusahaan yang terbentuk dari sekelompok usahawan yang berpengalaman dan profesional di dunia mesin fotocopy dengan merk Canon dan Xerox</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo fugit nulla sapiente placeat commodi facilis voluptatum at nisi sunt explicabo doloribus facere, culpa pariatur tenetur sint et provident iusto? Facilis?</p>
                 </div>
             </div>
             <div class="col-md-6 footer-right">
@@ -132,16 +132,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="sign-gd-two">
                         <h4>Hubungi Kami</h4>
                         <ul>
-                            <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Alamat : Rukan Exclusive Kav 3A Jl. Radin Inten II no. 80 Duren Sawit Jakarta Timur 13440</li>
-                            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : ubja.marketing@gmail.com</li>
-                            <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Telp : 089614388247 (Wulan)</li>
+                            <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Alamat : Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, vero!</li>
+                            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : Lorem.@Lorem.com</li>
+                            <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Telp : 081234566</li>
                         </ul>
                     </div>
                     <div class="clearfix"></div>
                 </div>
             </div>
             <div class="clearfix"></div>
-            <p class="copy-right">© {{ date('Y') }} PT. UBJA. All rights reserved</p>
+            <p class="copy-right">© {{ date('Y') }} All rights reserved</p>
         </div>
     </div>
 

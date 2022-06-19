@@ -5,7 +5,7 @@
 /public/user/bukti_pembayaran
 /storage/*.key
 /vendor
-# .env
+.env
 .env.backup
 .phpunit.result.cache
 docker-compose.override.yml
