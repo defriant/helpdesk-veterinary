@@ -50,6 +50,7 @@
                                     <th>Nama Pemesan</th>
                                     <th>Tanggal Pesanan</th>
                                     <th>Status Pesanan</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>

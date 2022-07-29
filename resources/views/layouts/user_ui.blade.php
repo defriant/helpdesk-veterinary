@@ -34,7 +34,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="header-bot">
         <div class="container">
             <div class="col-md-3 header-left">
-                <h1><a href="/"><img src="{{ asset('logo/') }}" alt="LOGO"></a></h1>
+                <h1><a href="/"><img src="{{ asset('logo/logo.jpeg') }}" alt="LOGO"></a></h1>
             </div>
             <div class="col-md-6 head-middle">
                 @if (Request::is('/') || Request::is('produk/*'))
@@ -124,7 +124,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
         <div class="container">
             <div class="col-md-6 footer-left">
                 <div class="sign-grds">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quo fugit nulla sapiente placeat commodi facilis voluptatum at nisi sunt explicabo doloribus facere, culpa pariatur tenetur sint et provident iusto? Facilis?</p>
+                    <p>Klinik Renita Petcare merupakan perusahaan yang tergolong dalam usaha kecil menengah dan bergerak di bidang penjualan perlengkapan, obat-obatan dan makanan hewan peliharaan. Sering juga disebut Rumah Kucing Bekasi (Renitta Pet Care) adalah salah satu shelter kucing (Domestik/Ras) yang berada di Bekasi,di dirikan oleh Renitta Amalia pada tanggal 5 Oktober 2017- sampai sekarang. Klinik Renita Petcare di Jalan Kampung Conyosog RT.004/001 Burangkeng No.75 Bekasi, Jawa Barat 17350. Dalam bisnisnya Klinik Renita Petcare menjual berbagai kebutuhan hewan peliharaan mulai makanan kucing, anjing, kandang, dan lain sebagainya.</p>
                 </div>
             </div>
             <div class="col-md-6 footer-right">
@@ -132,9 +132,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
                     <div class="sign-gd-two">
                         <h4>Hubungi Kami</h4>
                         <ul>
-                            <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Alamat : Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio, vero!</li>
-                            <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : Lorem.@Lorem.com</li>
-                            <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Telp : 081234566</li>
+                            <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Alamat : Jalan Kampung Conyosog Rt.004/001 Burangkeng No 75 Bekasi, Jawa Barat 17350.</li>
+                            {{-- <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>Email : Lorem.@Lorem.com</li>
+                            <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>Telp : 081234566</li> --}}
                         </ul>
                     </div>
                     <div class="clearfix"></div>

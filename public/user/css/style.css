@@ -15,7 +15,7 @@
 }
 
 .header-left h1 a img {
-    width: 110px;
+    width: 140px;
 }
 
 .head-middle {
@@ -1185,7 +1185,7 @@
 .chat-panel .center .message .message-content {
     max-width: 70%;
     font-size: .85rem;
-    background-color: rgb(0 ,0 ,0, .1);
+    background-color: rgb(0, 0, 0, .1);
     padding: .3rem .6rem;
     border-radius: 4px;
     white-space: pre-line;

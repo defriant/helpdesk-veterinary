@@ -36,7 +36,7 @@
 		<!-- NAVBAR -->
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="brand">
-				<a href="/admin/produk"><img src="{{ asset('logo/') }}" class="logo" alt="LOGO"></a>
+				<a href="/admin/produk"><img src="{{ asset('logo/logo.jpeg') }}" class="logo" alt="LOGO"></a>
 			</div>
 			<div class="container-fluid">
 				@if (Auth::user()->role == 'admin')
