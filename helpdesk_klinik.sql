@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 19 Jun 2022 pada 17.11
+-- Waktu pembuatan: 29 Jul 2022 pada 18.50
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -47,8 +47,8 @@ CREATE TABLE `barang` (
 
 INSERT INTO `barang` (`id`, `jenis`, `nama`, `harga`, `stock`, `gambar`, `deskripsi`, `terjual`, `dilihat`, `created_at`, `updated_at`) VALUES
 ('obat-flu-kucing', 'obat', 'Obat flu kucing', 120000, 120, 'obat-flu-kucing-1654892009-image-1.png', 'obat flu kucing', 0, 1, '2022-06-10 20:13:29', '2022-06-10 20:17:36'),
-('pedigree', 'makanan', 'Pedigree', 85000, 298, 'pedigree-1654891872-image-1.png', 'Makanan anjing pedigree', 2, 3, '2022-06-10 20:11:12', '2022-06-10 21:31:06'),
-('royal-cannin', 'makanan', 'Royal Cannin', 50000, 499, 'royal-cannin-1654891583-image-1.jpg', 'Makanan kucing royal canning', 1, 1, '2022-06-10 20:06:23', '2022-06-19 15:10:19'),
+('pedigree', 'makanan', 'Pedigree', 85000, 296, 'pedigree-1654891872-image-1.png', 'Makanan anjing pedigree', 4, 3, '2022-06-10 20:11:12', '2022-07-29 16:43:36'),
+('royal-cannin', 'makanan', 'Royal Cannin', 50000, 498, 'royal-cannin-1654891583-image-1.jpg', 'Makanan kucing royal canning', 2, 1, '2022-06-10 20:06:23', '2022-07-29 16:43:36'),
 ('whiskas-junior', 'makanan', 'Whiskas junior', 40000, 700, 'whiskas-junior-1654891970-image-1.png', 'makanan kucing junior', 0, 1, '2022-06-10 20:12:50', '2022-06-10 21:31:17');
 
 -- --------------------------------------------------------
@@ -98,14 +98,6 @@ CREATE TABLE `chat` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `chat`
---
-
-INSERT INTO `chat` (`id`, `from_user`, `to_user`, `message`, `is_read`, `created_at`, `updated_at`) VALUES
-(88, 40, 1, 'cakep !]', 1, '2022-06-10 21:34:49', '2022-06-10 21:34:51'),
-(89, 1, 40, 'OK !', 1, '2022-06-10 21:34:54', '2022-06-10 21:34:55');
 
 -- --------------------------------------------------------
 
@@ -183,20 +175,6 @@ CREATE TABLE `notifikasi` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `notifikasi`
---
-
-INSERT INTO `notifikasi` (`id`, `user_id`, `jenis`, `notif`, `url`, `is_read`, `created_at`, `updated_at`) VALUES
-(239, '37', 'pesanan', 'Pesananmu telah dikonfirmasi oleh admin', '/pesanan/3706117287', 1, '2022-06-10 20:25:58', '2022-06-10 21:15:52'),
-(240, '37', 'pembayaran', 'Pembayaran telah divalidasi', '/pesanan/3706117287', 1, '2022-06-10 20:26:23', '2022-06-10 21:15:52'),
-(241, '37', 'pesanan', 'Pesananmu sedang dikirim ke Bekasi', '/pesanan/3706117287', 1, '2022-06-10 20:26:40', '2022-06-10 21:15:52'),
-(242, '37', 'pesanan', 'Pesananmu telah tiba di tujuan, pesanan selesai', '/pesanan/3706117287', 1, '2022-06-10 20:27:05', '2022-06-10 21:15:52'),
-(243, '40', 'pesanan', 'Pesananmu telah dikonfirmasi oleh admin', '/pesanan/4006115660', 1, '2022-06-10 21:32:00', '2022-06-10 21:32:51'),
-(244, '40', 'pembayaran', 'Pembayaran telah divalidasi', '/pesanan/4006115660', 1, '2022-06-10 21:32:23', '2022-06-10 21:32:51'),
-(245, '40', 'pesanan', 'Pesananmu sedang dikirim ke Bekasi', '/pesanan/4006115660', 1, '2022-06-10 21:32:34', '2022-06-10 21:32:51'),
-(246, '40', 'pesanan', 'Pesananmu telah tiba di tujuan, pesanan selesai', '/pesanan/4006115660', 1, '2022-06-10 21:32:46', '2022-06-10 21:32:51');
-
 -- --------------------------------------------------------
 
 --
@@ -223,14 +201,6 @@ CREATE TABLE `pesanan` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data untuk tabel `pesanan`
---
-
-INSERT INTO `pesanan` (`id`, `user_id`, `nama`, `telp`, `alamat`, `ongkir`, `total`, `status`, `konfirmasi`, `menunggu_validasi`, `validasi`, `pengiriman`, `tiba_di_tujuan`, `bukti_pembayaran`, `alasan_batal`, `created_at`, `updated_at`) VALUES
-('3706117287', '37', 'afif', '12345', 'Bekasi', 15000, 185000, 'selesai', '2022-06-11 03:25:58', '2022-06-11 03:26:14', '2022-06-11 03:26:23', '2022-06-11 03:26:40', '2022-06-11 03:27:05', 'contoh_3706117287.jpg', NULL, '2022-06-10 20:25:50', '2022-06-10 20:27:05'),
-('4006115660', '40', 'Tester', '12345', 'Bekasi', 15000, 65000, 'selesai', '2022-06-11 04:32:00', '2022-06-11 04:32:14', '2022-06-11 04:32:23', '2022-06-11 04:32:34', '2022-06-11 04:32:46', 'contoh_4006115660.jpg', NULL, '2022-06-10 21:31:49', '2022-06-10 21:32:46');
-
 -- --------------------------------------------------------
 
 --
@@ -251,14 +221,6 @@ CREATE TABLE `pesanan_barang` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `pesanan_barang`
---
-
-INSERT INTO `pesanan_barang` (`id`, `pesanan_id`, `barang_id`, `nama`, `harga`, `jumlah`, `total`, `gambar`, `url`, `terjual`, `created_at`, `updated_at`) VALUES
-(151, '3706117287', 'pedigree', 'Pedigree', '85000', 2, '170000', 'pedigree-1654891872-image-1.png', '/produk/pedigree', 'terjual', '2022-06-10 20:25:50', '2022-06-10 20:26:23'),
-(152, '4006115660', 'royal-cannin', 'Royal Cannin', '50000', 1, '50000', 'royal-cannin-1654891583-image-1.jpg', '/produk/royal-cannin', 'terjual', '2022-06-10 21:31:49', '2022-06-10 21:32:23');
 
 -- --------------------------------------------------------
 
@@ -287,10 +249,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `telp`, `alamat`, `email`, `image`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Dokter', '08123123123', 'Jakarta', 'dokter@dokter.com', NULL, NULL, '$2y$10$90RXNTjU7hQthRrb9H2I2.BZ.aQa5n6b0cSUDqs3LFSP6oj.nO43O', 'owner', NULL, '2022-06-10 10:10:11', '2022-06-10 10:12:34'),
-(2, 'Admin', '081313131313', 'Bekasi Utara', 'admin@admin.com', NULL, NULL, '$2y$10$8zGFQ2nSWPE07QFBxjQqlul3DuSrTn/sp7.x.k5wcXH6Vwb6XXRda', 'admin', NULL, '2021-05-26 07:51:19', '2021-05-26 07:51:19'),
-(37, 'afif', '12345', 'Bekasi', 'defriant17@gmail.com', NULL, NULL, '$2y$10$w1gB5ZQ/qJs0kcMhKq9vMea.zZQyNfAFe515zSyAsnqB7.u54DlEi', 'user', NULL, '2022-06-10 06:18:06', '2022-06-10 06:18:06'),
-(39, 'Johansyah Tamaslan', '12345', 'Bekasi', 'tes@tes.com', NULL, NULL, '$2y$10$jk0EPgjIMm/8VhTGmUI57eueFTvtPe7rwqtv1lfFnycC2Fv4Msejq', 'user', NULL, '2022-06-10 17:31:39', '2022-06-10 17:31:39'),
-(40, 'Tester', '12345', 'Bekasi', 'tes1@tes.com', NULL, NULL, '$2y$10$T.XDqE31OyPVTrnQ9u0V7.cgaBDxRZmEn6vpCNFWNa5SgUT5zTRM2', 'user', NULL, '2022-06-10 21:31:01', '2022-06-10 21:31:01');
+(2, 'Admin', '081313131313', 'Bekasi Utara', 'admin@admin.com', NULL, NULL, '$2y$10$8zGFQ2nSWPE07QFBxjQqlul3DuSrTn/sp7.x.k5wcXH6Vwb6XXRda', 'admin', NULL, '2021-05-26 07:51:19', '2021-05-26 07:51:19');
 
 --
 -- Indexes for dumped tables
@@ -371,13 +330,13 @@ ALTER TABLE `barang_img`
 -- AUTO_INCREMENT untuk tabel `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT untuk tabel `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=214;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=216;
 
 --
 -- AUTO_INCREMENT untuk tabel `migrations`
@@ -389,19 +348,19 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT untuk tabel `notifikasi`
 --
 ALTER TABLE `notifikasi`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=247;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=251;
 
 --
 -- AUTO_INCREMENT untuk tabel `pesanan_barang`
 --
 ALTER TABLE `pesanan_barang`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=153;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
