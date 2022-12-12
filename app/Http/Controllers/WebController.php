@@ -447,11 +447,12 @@ class WebController extends Controller
 
     public function chat_send(Request $request)
     {
-        $dokter_id = User::where('role', 'owner')->first()->id;
+        $admin_id = User::where('role', 'admin')->first()->id;
 
-        Chat::create([
+        $chat = Chat::create([
+            "komplain_id" => $request->komplain_id,
             "from_user" => Auth::user()->id,
-            "to_user" => $dokter_id,
+            "to_user" => $admin_id,
             "message" => $request->message,
             "is_read" => false
         ]);
@@ -460,30 +461,33 @@ class WebController extends Controller
             'cluster' => 'ap1',
             'useTLS' => true,
         );
+
         $pusher = new Pusher(
             env('PUSHER_APP_KEY'),
             env('PUSHER_APP_SECRET'),
             env('PUSHER_APP_ID'),
             $options
         );
-        // $notif_data = ['pesanan_id' => $id_pesanan];
+
         $data = [
-            "from" => Auth::user()->id,
-            "message" => $request->message
+            "komplain_id" => $request->komplain_id,
+            "chat" => $chat,
         ];
-        $pusher->trigger('owner-chat', 'chat-event', $data);
+
+        $pusher->trigger('admin-channel', 'chat-event', $data);
 
         return response()->json([
             "response" => true,
-            "message" => ""
+            "chat" => $chat,
+            "komplain_id" => $request->komplain_id
         ]);
     }
 
-    public function chat_read()
+    public function chat_read(Request $request)
     {
-        $dokter_id = User::where('role', 'owner')->first()->id;
+        $admin_id = User::where('role', 'admin')->first()->id;
 
-        Chat::where('from_user', $dokter_id)->where('to_user', Auth::user()->id)->update([
+        Chat::where('komplain_id', $request->komplain_id)->where('to_user', Auth::user()->id)->update([
             "is_read" => true
         ]);
 

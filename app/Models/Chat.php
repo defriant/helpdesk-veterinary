@@ -11,6 +11,7 @@ class Chat extends Model
 
     protected $table = "chat";
     protected $fillable = [
+        "komplain_id",
         "from_user",
         "to_user",
         "message",

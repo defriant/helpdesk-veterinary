@@ -108,7 +108,7 @@
 		</footer>
 
 		@auth
-			@if (Auth::user()->role == "owner")
+			@if (Auth::user()->role == "admin")
 			<div class="btn-chat-wrapper" id="btn-chat">
 				<span class="chat-notif" style="display: none;">0</span>
 				<button class="chat-btn"><i class="fas fa-comment-dots"></i></button>
@@ -119,6 +119,7 @@
 						Chat
 					</div>
 					<div class="bottom">
+						
 					</div>
 				</div>
 				<div class="right-panel">
@@ -179,7 +180,12 @@
 		@if (Auth::user()->role == "owner")
 		<script src="{{ asset('admins/scripts/owner-chat.js') }}"></script>
 		@endif
+
+		@if (Auth::user()->role == "admin")
+		<script src="{{ asset('admins/scripts/admin-chat.js') }}"></script>
+		@endif
 	@endauth
+	<input type="hidden" id="user-id" value="{{ Auth::user()->id }}">
 </body>
 
 </html>
