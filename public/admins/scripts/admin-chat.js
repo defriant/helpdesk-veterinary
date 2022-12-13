@@ -1,14 +1,13 @@
 let messageUnread = 0
 let chatOpen = null
+let komplainData = []
 
 let btnChat = document.getElementById('btn-chat')
 let chatPanel = document.getElementById('chat-panel')
-// let chatBody = document.querySelector('#chat-panel .center')
 let benCloseChat = document.getElementById('close-chat-panel')
 
 btnChat.addEventListener('click', function () {
     this.classList.add('hidden')
-    // chatBody.scrollTop = chatBody.scrollHeight - chatBody.offsetHeight
     chatPanel.classList.add('show-panel')
 })
 
@@ -28,35 +27,38 @@ benCloseChat.addEventListener('click', function () {
     }, 300);
 })
 
-function getUsers() {
+function getKomplain() {
     messageUnread = 0
     return new Promise((resolve, reject) => {
-        ajaxRequest.get({ "url": "/owner/chat/get-users" }).then(res => {
-            if (res.length > 0) {
+        ajaxRequest.get({ "url": "/admin/komplain/get" }).then(res => {
+            if (res.data.length > 0) {
+                komplainData = res.data
+
                 let users = ``
                 let notif = ``
-                res.forEach(u => {
+
+                res.data.forEach(u => {
                     messageUnread += u.unread
                     if (u.id == chatOpen) {
-                        notif = `<span class="notif" style="display: none;">0</span>`
+                        notif = `<span class="notif" data-notif="notif-${u.id}" style="display: none;">0</span>`
                     } else {
-                        notif = `<span class="notif" style="display: ${(u.unread > 0) ? "block" : "none"};">${u.unread}</span>`
+                        notif = `<span class="notif" data-notif="notif-${u.id}" style="display: ${(u.unread > 0) ? "block" : "none"};">${u.unread}</span>`
                     }
 
-                    users += `<div class="user" data-id="${u.id}" data-name="${u.name}">
-                                    <i class="fas fa-user"></i>
-                                    <span>${u.name}</span>
+                    users += `<div class="user${chatOpen === u.id ? ' active' : ''}" data-id="${u.id}">
+                                    <span class="subjek">${u.subjek}</span>
+                                    <span class="small">From : ${u.user.name}</span>
+                                    <span class="small">No. ${u.id}</span>
                                     ${notif}
                                 </div>`
                 });
+
                 $('#chat-panel .left-panel .bottom').html(users)
-                getUserMessage()
-                if (messageUnread > 0) {
+                komplainClick()
+
+                if (res.unread > 0) {
                     $('#btn-chat .chat-notif').html(messageUnread)
                     $('#btn-chat .chat-notif').css('display', 'block')
-                }
-                if (chatOpen != null) {
-                    $(`.user[data-id="${chatOpen}"]`).addClass('active')
                 }
             }
             resolve()
@@ -64,17 +66,19 @@ function getUsers() {
     })
 }
 
-getUsers().then(res => {
-    console.log('users refreshed !');
+getKomplain().then(res => {
+    // console.log('users refreshed !');
 })
 
-
-function getUserMessage() {
+function komplainClick() {
     $('.user').on('click', function () {
+        const data = komplainData.find(v => v.id === $(this).data('id'))
+
         chatOpen = $(this).data('id')
         let thisUnreadElement = $(this).find('.notif').eq(0)
         let thisUnread = thisUnreadElement.html()
         thisUnread = parseInt(thisUnread)
+
         if (thisUnread > 0) {
             thisUnreadElement.css('display', 'none')
             thisUnreadElement.html('0')
@@ -87,45 +91,47 @@ function getUserMessage() {
             }
 
             ajaxRequest.post({
-                "url": "/owner/chat/read-message",
+                "url": "/admin/komplain/read-message",
                 "data": {
-                    "from_user": $(this).data('id')
+                    "komplain_id": $(this).data('id')
                 }
             })
         }
 
         $('.user').removeClass('active')
         $(this).addClass('active')
-        $('.right-panel .top span').html($(this).data('name'))
-        ajaxRequest.post({
-            "url": "/owner/chat/get-message",
-            "data": {
-                "user_id": $(this).data('id')
-            }
-        }).then(res => {
-            let messages = ``
-            res.chat.forEach(c => {
-                messages += `<div class="message ${(c.from_user == res.my_id) ? 'me' : ''}">
-                                <div class="message-content">${c.message}</div>
-                            </div>`
-            })
+        $('.right-panel .top span').html(data.user.name)
 
-            $('.empty-chat').remove()
-            $('#chat-panel .right-panel .center').remove()
-            $('#chat-panel .right-panel .bottom').remove()
+        let messages = `<div class="subjek">
+                            <span>Subjek : </span>&nbsp; ${data.subjek}
+                        </div>`
 
-            $('#chat-panel .right-panel').append(`<div class="center"></div>
+        data.chat.forEach(c => {
+            messages += `<div class="message ${(c.from_user == document.getElementById('user-id').value) ? 'me' : ''}">
+                            <div class="message-content">${c.message}</div>
+                        </div>`
+        })
+
+        $('.empty-chat').remove()
+        $('#chat-panel .right-panel .center').remove()
+        $('#chat-panel .right-panel .bottom').remove()
+
+        $('#chat-panel .right-panel').append(`<div class="center"></div>
                                                     <div class="bottom">
                                                         <form id="form-chat">
                                                             <textarea class="input-chat" rows="1" placeholder="Tulis pesan ..."></textarea>
                                                             <button type="submit" class="send-chat"><i class="far fa-paper-plane"></i></button>
                                                         </form>
                                                     </div>`)
-            $('#chat-panel .right-panel .center').html(messages)
-            sendMessageFn($(this).data('id'))
-            let chatBody = document.querySelector('#chat-panel .center')
-            chatBody.scrollTop = chatBody.scrollHeight - chatBody.offsetHeight
-        })
+
+        $('#chat-panel .right-panel .center').html(messages)
+
+        const subjekHeight = $('#chat-panel .right-panel .center .subjek').outerHeight()
+        $('#chat-panel .right-panel .center').css('padding-top', `calc(${subjekHeight}px + 1.25rem)`)
+
+        sendMessageFn(data.user.id)
+        let chatBody = document.querySelector('#chat-panel .center')
+        chatBody.scrollTop = chatBody.scrollHeight - chatBody.offsetHeight
     })
 }
 
@@ -138,15 +144,18 @@ function sendMessage(to) {
         let chatBody = document.querySelector('#chat-panel .center')
         chatBody.scrollTop = chatBody.scrollHeight - chatBody.offsetHeight
         ajaxRequest.post({
-            "url": "/owner/chat/send-message",
+            "url": "/admin/komplain/send-message",
             "data": {
                 "to_user": to,
+                "komplain_id": chatOpen,
                 "message": message
             }
         }).then(res => {
             if (!res.response) {
                 alert(res.message)
             }
+
+            komplainData.find(v => v.id === res.chat.komplain_id).chat.push(res.chat)
         })
         $('#form-chat .input-chat').val('')
     }
@@ -168,30 +177,36 @@ function sendMessageFn(to) {
     });
 }
 
-var pusher = new Pusher('77c3bdf5fd626a80691a', {
-    cluster: 'ap1'
-});
-
-var channel = pusher.subscribe('owner-chat');
-
 channel.bind('chat-event', function (data) {
-    if (chatOpen == data.from) {
+    const checkData = komplainData.find(v => v.id === data.komplain_id)
+
+    if (!checkData) return getKomplain()
+
+    komplainData.find(v => v.id === data.komplain_id).chat.push(data.chat)
+
+    if (chatOpen === data.komplain_id) {
         $('#chat-panel .right-panel .center').append(`<div class="message">
-                                                            <div class="message-content">${data.message}</div>
+                                                            <div class="message-content">${data.chat.message}</div>
                                                         </div>`)
+
         let chatBody = document.querySelector('#chat-panel .center')
         chatBody.scrollTop = chatBody.scrollHeight - chatBody.offsetHeight
-        ajaxRequest.post({
-            "url": "/owner/chat/read-message",
-            "data": {
-                "from_user": data.from
-            }
-        }).then(res => {
-            getUsers()
-        })
     } else {
-        getUsers()
+        let thisKomplainUnread = $(`.notif[data-notif="notif-${data.komplain_id}"]`).html()
+        thisKomplainUnread = parseInt(thisKomplainUnread) + 1
+
+        if (thisKomplainUnread > 0) {
+            $(`.notif[data-notif="notif-${data.komplain_id}"]`).html(thisKomplainUnread)
+            $(`.notif[data-notif="notif-${data.komplain_id}"]`).show()
+        }
+
+        messageUnread += 1
+        if (messageUnread == 0) {
+            $('#btn-chat .chat-notif').hide()
+            $('#btn-chat .chat-notif').html('0')
+        } else {
+            $('#btn-chat .chat-notif').html(messageUnread)
+            $('#btn-chat .chat-notif').show()
+        }
     }
-    // getUsers().then(res => {
-    // })
 });

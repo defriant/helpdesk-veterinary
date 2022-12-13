@@ -6,12 +6,12 @@ var pusher = new Pusher('77c3bdf5fd626a80691a', {
 var channel = pusher.subscribe('admin-channel');
 
 // Push Notif Konfirmasi Pesanan
-channel.bind('konfirmasi-pesanan-event', function() {
+channel.bind('konfirmasi-pesanan-event', function () {
     notification_badge();
     $.ajax({
-        type:'get',
-        url:'/admin/pesanan/menunggu-konfirmasi-data',
-        success:function(data){
+        type: 'get',
+        url: '/admin/pesanan/menunggu-konfirmasi-data',
+        success: function (data) {
             $('#menunggu-konfirmasi-data').html(data)
             toastr.options = {
                 "timeOut": "5000",
@@ -21,12 +21,12 @@ channel.bind('konfirmasi-pesanan-event', function() {
     })
 });
 
-channel.bind('custom-konfirmasi-pesanan-event', function() {
+channel.bind('custom-konfirmasi-pesanan-event', function () {
     notification_badge();
     $.ajax({
-        type:'get',
-        url:'/admin/custom-pesanan/menunggu-konfirmasi-data',
-        success:function(data){
+        type: 'get',
+        url: '/admin/custom-pesanan/menunggu-konfirmasi-data',
+        success: function (data) {
             $('#custom-menunggu-konfirmasi-data').html(data)
             currencyInput()
             toastr.options = {
@@ -38,34 +38,34 @@ channel.bind('custom-konfirmasi-pesanan-event', function() {
 });
 
 // Push Notif Validasi Pembayaran
-channel.bind('validasi-pembayaran-event', function(data) {
+channel.bind('validasi-pembayaran-event', function (data) {
     notification_badge();
     var pesanan_id = data.pesanan_id
     $.ajax({
-        type:'get',
-        url:'/admin/pesanan/validasi-pembayaran-data',
-        success:function(data){
+        type: 'get',
+        url: '/admin/pesanan/validasi-pembayaran-data',
+        success: function (data) {
             $('#validasi-pembayaran-data').html(data)
             toastr.options = {
                 "timeOut": "5000",
             }
-            toastr['info']('Pesanan ID. '+pesanan_id+' Menunggu Validasi Pembayaran <br/> <a href="/admin/pesanan/validasi-pembayaran">Lihat...</a>');
+            toastr['info']('Pesanan ID. ' + pesanan_id + ' Menunggu Validasi Pembayaran <br/> <a href="/admin/pesanan/validasi-pembayaran">Lihat...</a>');
         }
     })
 });
 
-channel.bind('validasi-pembayaran-custom-event', function(data) {
+channel.bind('validasi-pembayaran-custom-event', function (data) {
     notification_badge();
     var pesanan_id = data.pesanan_id
     $.ajax({
-        type:'get',
-        url:'/admin/custom-pesanan/validasi-pembayaran-data',
-        success:function(data){
+        type: 'get',
+        url: '/admin/custom-pesanan/validasi-pembayaran-data',
+        success: function (data) {
             $('#custom-validasi-pembayaran-data').html(data)
             toastr.options = {
                 "timeOut": "5000",
             }
-            toastr['info']('Custom Pesanan ID. '+pesanan_id+' Menunggu Validasi Pembayaran <br/> <a href="/admin/custom-pesanan/validasi-pembayaran">Lihat...</a>');
+            toastr['info']('Custom Pesanan ID. ' + pesanan_id + ' Menunggu Validasi Pembayaran <br/> <a href="/admin/custom-pesanan/validasi-pembayaran">Lihat...</a>');
         }
     })
 });

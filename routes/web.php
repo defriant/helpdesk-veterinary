@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\WebController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminKomplainController;
+use App\Http\Controllers\KomplainController;
 use App\Http\Controllers\RegisController;
 use App\Http\Controllers\OwnerController;
 use App\Mail\EmailVerification;
@@ -71,7 +73,10 @@ Route::group(['middleware' => ['auth', 'customerRole']], function () {
 
     Route::get('/customer/chat/get', [WebController::class, 'chat_get']);
     Route::post('/customer/chat/send', [WebController::class, 'chat_send']);
-    Route::get('/customer/chat/read', [WebController::class, 'chat_read']);
+
+    Route::post('/customer/chat/read', [WebController::class, 'chat_read']);
+    Route::get('/customer/komplain/get', [KomplainController::class, 'get']);
+    Route::post('/customer/komplain/add', [KomplainController::class, 'add']);
 });
 
 
@@ -116,6 +121,10 @@ Route::group(['middleware' => ['auth', 'adminRole']], function () {
         return view('admin.report');
     });
     Route::post('/admin/laporan-transaksi/get', [AdminController::class, 'get_laporan_transaksi']);
+
+    Route::get('/admin/komplain/get', [AdminKomplainController::class, 'get']);
+    Route::post('/admin/komplain/read-message', [AdminKomplainController::class, 'read_chat']);
+    Route::post('/admin/komplain/send-message', [AdminKomplainController::class, 'send']);
 });
 
 // Owner Route

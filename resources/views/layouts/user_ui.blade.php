@@ -164,32 +164,49 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     @auth
     <div class="btn-chat-wrapper" id="btn-chat">
-        <span class="chat-notif" style="display: none;">0</span>
+        <span class="chat-notif" id="chat-notif" style="display: none;">0</span>
         <button class="chat-btn"><i class="fas fa-comment-dots"></i></button>
     </div>
     <div class="chat-panel" id="chat-panel">
         <div class="top">
-            <span>Hubungi Dokter</span>
-            <i class="fas fa-chevron-down" id="close-chat-panel"></i>
-        </div>
-        <div class="center">
-            {{-- <div class="message">
-                <div class="message-content">
-                    Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet.
-                </div>
+            <div class="top-left">
+                <i class="fas fa-arrow-left" id="komplain-back" style="display: none"></i>
+                <span>Hubungi Admin</span>
             </div>
-            <div class="message me">
-                <div class="message-content">
-                    Lorem ipsum dolor sit amet.
+            <div class="top-right">
+                <i class="far fa-plus" title="Buat pengajuan komplain" id="add-komplain"></i>
+                <i class="fas fa-chevron-down" id="close-chat-panel"></i>
+            </div>
+        </div>
+
+        <div class="center" id="chat-data" style="display: none">
+            
+        </div>
+
+        <div class="center" id="add-komplain-data" style="display: none">
+            <input type="text" placeholder="Subjek" id="subjek-komplain">
+            <textarea id="pesan-komplain" placeholder="Pesan"></textarea>
+        </div>
+
+        <div class="center" id="komplain-data">
+            {{-- <div class="komplain">
+                <div>
+                    <span class="komplain-subjek">Lorem ipsum dolor sit amet consectetur adipisicing elit. Beatae, placeat!</span>
+                    <span class="komplain-id">No. &nbsp;<span>QWERTYUIOP</span></span>
                 </div>
+                <span class="chat-notif komplain-notif">0</span>
             </div> --}}
         </div>
-        <div class="bottom">
-            <form id="form-chat">
+
+        <div class="bottom" style="display: none">
+            <form id="form-chat" style="display: none">
                 <textarea class="input-chat" rows="1" placeholder="Tulis pesan ..."></textarea>
-                {{-- <input type="text" class="input-chat" placeholder="Tulis pesan ..."> --}}
                 <button type="submit" class="send-chat"><i class="far fa-paper-plane"></i></button>
             </form>
+            <button type="button" class="send-chat" id="send-komplain" style="display: none">
+                <i class="far fa-paper-plane"></i>
+                <span>Kirim</span>
+            </button>
         </div>
     </div>
     @endauth
@@ -220,8 +237,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
     @auth
     <input type="hidden" id="user-id" value="{{ Auth::user()->id }}">
-    <script src="{{ asset('user/js/main/chat.js') }}"></script>
     <script src="{{ asset('user/js/main/notification-script.js') }}"></script>
+    <script src="{{ asset('user/js/main/chat.js') }}"></script>
     @endauth
 </body>
 
