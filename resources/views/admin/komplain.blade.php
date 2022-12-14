@@ -15,43 +15,10 @@
                 <hr>
             </div>
             <div class="panel-body" id="data-komplain">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
-                            <th>Username</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Steve</td>
-                            <td>Jobs</td>
-                            <td>@steve</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Simon</td>
-                            <td>Philips</td>
-                            <td>@simon</td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Jane</td>
-                            <td>Doe</td>
-                            <td>@jane</td>
-                        </tr>
-                    </tbody>
-                </table>
-                {{-- <button class="no-print" id="btn-print"><i class="far fa-print"></i> &nbsp; Print</button>
-                <div id="laporan-transaksi-content">
-                    <div class="loader">
-                        <i class="fas fa-ban" style="font-size: 5rem; opacity: .5"></i>
-                        <h5 style="margin-top: 2.5rem; opacity: .75">Pilih periode transaksi untuk melihat laporan</h5>
-                    </div>
-                </div> --}}
+                <div class="loader">
+                    <div class="loader4"></div>
+                    <h5 style="margin-top: 2.5rem">Loading data</h5>
+                </div>
             </div>
         </div>
         <!-- END OVERVIEW -->

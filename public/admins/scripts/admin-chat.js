@@ -27,6 +27,60 @@ benCloseChat.addEventListener('click', function () {
     }, 300);
 })
 
+function createTableKomplain() {
+    console.log('creating table komplain !');
+
+    if (komplainData.length > 0) {
+        let komplainTable = `<table class="table">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 160px">No</th>
+                                        <th style="width: 160px">Nama</th>
+                                        <th>Subjek</th>
+                                        <th style="width: 150px;">Status</th>
+                                        <th style="width: 180px;">Tanggal</th>
+                                        <th style="width: 100px; text-align: center;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody id="komplain-tbody"></tbody>
+                            </table>`
+
+        $('#data-komplain').html(komplainTable)
+
+        const getStatusKomplain = id => {
+            const data = komplainData.find(v => v.id === id)
+            console.log(data);
+            if (data.chat[data.chat.length - 1].from_user == $('#user-id').val()) return `<span style="color: #00bd00;">Dibalas</span>`
+            return `<span style="color: #d39200;">Belum dibalas</span>`
+        }
+
+        let komplainTBody = komplainData.map(v => `<tr>
+                                                    <td>${v.id}</td>
+                                                    <td>${v.user.name}</td>
+                                                    <td>${v.subjek}</td>
+                                                    <td>${getStatusKomplain(v.id)}</td>
+                                                    <td>${timestampToDate('d M Y H:i', new Date(v.created_at))}</td>
+                                                    <td>
+                                                        <i class="far fa-comment-dots pengaduan-detail-chat" data-id="${v.id}" style="font-size: 20px; color: #00AAFF; cursor: pointer;"></i>
+                                                    </td>
+                                                </tr>`)
+
+        $('#komplain-tbody').html(komplainTBody)
+
+        $('.pengaduan-detail-chat').on('click', function () {
+            btnChat.click()
+            setTimeout(() => {
+                $(`.user[data-id="${$(this).data('id')}"]`).click()
+            }, 10);
+        })
+    } else {
+        $('#data-komplain').html(`<div class="loader">
+                                        <i class="fas fa-ban" style="font-size: 5rem; opacity: .5"></i>
+                                        <h5 style="margin-top: 2.5rem; opacity: .75">Belum ada data pengaduan</h5>
+                                    </div>`)
+    }
+}
+
 function getKomplain() {
     messageUnread = 0
     return new Promise((resolve, reject) => {
@@ -61,6 +115,11 @@ function getKomplain() {
                     $('#btn-chat .chat-notif').css('display', 'block')
                 }
             }
+
+            if (location.pathname === '/admin/komplain') {
+                createTableKomplain()
+            }
+
             resolve()
         })
     })
@@ -156,6 +215,7 @@ function sendMessage(to) {
             }
 
             komplainData.find(v => v.id === res.chat.komplain_id).chat.push(res.chat)
+            createTableKomplain()
         })
         $('#form-chat .input-chat').val('')
     }
@@ -183,6 +243,8 @@ channel.bind('chat-event', function (data) {
     if (!checkData) return getKomplain()
 
     komplainData.find(v => v.id === data.komplain_id).chat.push(data.chat)
+
+    createTableKomplain()
 
     if (chatOpen === data.komplain_id) {
         $('#chat-panel .right-panel .center').append(`<div class="message">

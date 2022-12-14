@@ -188,6 +188,10 @@
 		<script src="{{ asset('admins/scripts/admin-chat.js') }}"></script>
 		@endif
 	@endauth
+
+	@if (Request::is('admin/komplain'))
+	<script src="{{ asset('admins/scripts/komplain.js') }}"></script>
+	@endif
 	<input type="hidden" id="user-id" value="{{ Auth::user()->id }}">
 </body>
 
