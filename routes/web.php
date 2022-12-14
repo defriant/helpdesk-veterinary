@@ -122,6 +122,7 @@ Route::group(['middleware' => ['auth', 'adminRole']], function () {
     });
     Route::post('/admin/laporan-transaksi/get', [AdminController::class, 'get_laporan_transaksi']);
 
+    Route::get('/admin/komplain', [AdminKomplainController::class, 'komplain_view']);
     Route::get('/admin/komplain/get', [AdminKomplainController::class, 'get']);
     Route::post('/admin/komplain/read-message', [AdminKomplainController::class, 'read_chat']);
     Route::post('/admin/komplain/send-message', [AdminKomplainController::class, 'send']);

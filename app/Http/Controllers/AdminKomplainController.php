@@ -10,6 +10,11 @@ use Pusher\Pusher;
 
 class AdminKomplainController extends Controller
 {
+    public function komplain_view()
+    {
+        return view('admin.komplain');
+    }
+
     public function get()
     {
         $data = Komplain::with('chat')->with('user')->orderBy('created_at', 'DESC')->get();

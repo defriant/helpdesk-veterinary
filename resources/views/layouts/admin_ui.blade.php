@@ -89,6 +89,9 @@
 						<li>
 							<a href="/admin/laporan-transaksi" class="{{ Request::is('admin/laporan-transaksi') ? 'active' : '' }}"><i class="far fa-cash-register"></i> <span>Laporan Transaksi</span></a>
 						</li>
+						<li>
+							<a href="/admin/komplain" class="{{ Request::is('admin/komplain') ? 'active' : '' }}"><i class="far fa-flag"></i> <span>Laporan Pengaduan</span></a>
+						</li>
 					</ul>
 				</nav>
 			</div>
