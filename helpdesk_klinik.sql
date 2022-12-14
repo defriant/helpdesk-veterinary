@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 12 Des 2022 pada 16.20
+-- Waktu pembuatan: 14 Des 2022 pada 14.41
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `ecommerce_klinik`
+-- Database: `helpdesk_klinik`
 --
 
 -- --------------------------------------------------------
@@ -46,9 +46,9 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id`, `jenis`, `nama`, `harga`, `stock`, `gambar`, `deskripsi`, `terjual`, `dilihat`, `created_at`, `updated_at`) VALUES
-('obat-flu-kucing', 'obat', 'Obat flu kucing', 120000, 120, 'obat-flu-kucing-1654892009-image-1.png', 'obat flu kucing', 0, 5, '2022-06-10 20:13:29', '2022-12-10 18:12:22'),
-('pedigree', 'makanan', 'Pedigree', 85000, 296, 'pedigree-1654891872-image-1.png', 'Makanan anjing pedigree', 4, 3, '2022-06-10 20:11:12', '2022-07-29 16:43:36'),
-('royal-cannin', 'makanan', 'Royal Cannin', 50000, 498, 'royal-cannin-1654891583-image-1.jpg', 'Makanan kucing royal canning', 2, 2, '2022-06-10 20:06:23', '2022-12-10 19:03:20'),
+('obat-flu-kucing', 'obat', 'Obat flu kucing', 120000, 120, 'obat-flu-kucing-1654892009-image-1.png', 'obat flu kucing', 0, 1, '2022-06-10 20:13:29', '2022-06-10 20:17:36'),
+('pedigree', 'makanan', 'Pedigree', 85000, 296, 'pedigree-1654891872-image-1.png', 'Makanan anjing pedigree', 4, 4, '2022-06-10 20:11:12', '2022-10-12 14:49:30'),
+('royal-cannin', 'makanan', 'Royal Cannin', 50000, 498, 'royal-cannin-1654891583-image-1.jpg', 'Makanan kucing royal canning', 2, 1, '2022-06-10 20:06:23', '2022-07-29 16:43:36'),
 ('whiskas-junior', 'makanan', 'Whiskas junior', 40000, 700, 'whiskas-junior-1654891970-image-1.png', 'makanan kucing junior', 0, 1, '2022-06-10 20:12:50', '2022-06-10 21:31:17');
 
 -- --------------------------------------------------------
@@ -264,8 +264,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `telp`, `alamat`, `email`, `image`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Dokter', '08123123123', 'Jakarta', 'dokter@dokter.com', NULL, NULL, '$2y$10$90RXNTjU7hQthRrb9H2I2.BZ.aQa5n6b0cSUDqs3LFSP6oj.nO43O', 'owner', NULL, '2022-06-10 10:10:11', '2022-06-10 10:12:34'),
-(2, 'Admin', '081313131313', 'Bekasi Utara', 'admin@admin.com', NULL, NULL, '$2y$10$8zGFQ2nSWPE07QFBxjQqlul3DuSrTn/sp7.x.k5wcXH6Vwb6XXRda', 'admin', NULL, '2021-05-26 07:51:19', '2021-05-26 07:51:19'),
-(42, 'Afif', '123123', 'Bekasi', 'afifdefriant01@gmail.com', NULL, NULL, '$2y$10$m8Z/9mqo8KiU0P67rbn6p.hH4ULyYyQDGwTr0GEtI9h3sy06m5yVu', 'user', NULL, '2022-11-15 15:15:19', '2022-11-15 15:15:19');
+(2, 'Admin', '081313131313', 'Bekasi Utara', 'admin@admin.com', NULL, NULL, '$2y$10$8zGFQ2nSWPE07QFBxjQqlul3DuSrTn/sp7.x.k5wcXH6Vwb6XXRda', 'admin', NULL, '2021-05-26 07:51:19', '2021-05-26 07:51:19');
 
 --
 -- Indexes for dumped tables
@@ -352,7 +351,7 @@ ALTER TABLE `barang_img`
 -- AUTO_INCREMENT untuk tabel `chat`
 --
 ALTER TABLE `chat`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=202;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT untuk tabel `keranjang`
@@ -382,7 +381,7 @@ ALTER TABLE `pesanan_barang`
 -- AUTO_INCREMENT untuk tabel `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
