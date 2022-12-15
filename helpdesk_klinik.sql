@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 14 Des 2022 pada 14.41
+-- Waktu pembuatan: 15 Des 2022 pada 12.36
 -- Versi server: 10.4.22-MariaDB
 -- Versi PHP: 8.1.2
 
@@ -263,7 +263,6 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `telp`, `alamat`, `email`, `image`, `email_verified_at`, `password`, `role`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Dokter', '08123123123', 'Jakarta', 'dokter@dokter.com', NULL, NULL, '$2y$10$90RXNTjU7hQthRrb9H2I2.BZ.aQa5n6b0cSUDqs3LFSP6oj.nO43O', 'owner', NULL, '2022-06-10 10:10:11', '2022-06-10 10:12:34'),
 (2, 'Admin', '081313131313', 'Bekasi Utara', 'admin@admin.com', NULL, NULL, '$2y$10$8zGFQ2nSWPE07QFBxjQqlul3DuSrTn/sp7.x.k5wcXH6Vwb6XXRda', 'admin', NULL, '2021-05-26 07:51:19', '2021-05-26 07:51:19');
 
 --
