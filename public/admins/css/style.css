@@ -439,7 +439,7 @@
 
 .chat-panel-w-user .left-panel {
     width: 225px;
-    height: 600px;
+    height: 70vh;
     border-right: 1px solid rgb(240, 240, 240);
     display: grid;
     grid-template-rows: auto 1fr;
@@ -522,7 +522,7 @@
 
 .chat-panel-w-user .right-panel {
     width: 500px;
-    height: 600px;
+    height: 70vh;
     display: grid;
     grid-template-rows: auto 1fr auto;
 }
