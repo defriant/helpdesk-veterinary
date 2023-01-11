@@ -88,6 +88,11 @@
                             <h5 style="font-size: 12px; margin-bottom: 7px; margin-left: 7px;">Lakukan pembayaran transfer melalui rekening bank.</h5>
                         </li>
                         <li>
+                            <h5 style="font-size: 12px; margin-bottom: 7px; margin-left: 7px;">Bank BCA</h5>
+                            <h5 style="font-size: 12px; margin-bottom: 7px; margin-left: 7px;">No. Rekening 8850827118</h5>
+                            <h5 style="font-size: 12px; margin-bottom: 7px; margin-left: 7px;">A/N Dicky Wahyudi</h5>
+                        </li>
+                        <li>
                             <h5 style="font-size: 12px; margin-bottom: 7px; margin-left: 7px;">Screenshot atau foto bukti pembayaran.</h5>
                         </li>
                         <li>
